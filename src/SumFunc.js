@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 function SumFunc() {
   const [num1, setNum1] = useState('');
   const [num2, setNum2] = useState('');
-  const [result, setResult] = useState(null);
 
-  const handleCalculate = () => {
+  const result = useMemo(() => {
     const sum = parseFloat(num1) + parseFloat(num2);
-    setResult(sum);
-  };
-
-  /* var handleCalculate = function () {
-    var sum = parseFloat(num1) + parseFloat(num2);
-    setResult(sum);
-  }; */
+    console.log("useMemo fut");
+    return isNaN(sum) ? null : sum;
+  }, [num1, num2]);
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
@@ -34,10 +29,7 @@ function SumFunc() {
           style={{ margin: '5px', padding: '5px' }}
         />
       </div>
-      <button onClick={handleCalculate} style={{ margin: '5px', padding: '5px' }}>
-        Összeadás
-      </button>
-      {result !== null && <p>Eredmény: {result}</p>}
+      <p>Eredmény: {result !== null ? result : 'Adj meg érvényes számokat!'}</p>
     </div>
   );
 }
