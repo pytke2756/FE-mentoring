@@ -10,6 +10,11 @@ function SumFunc() {
     setResult(sum);
   };
 
+  /* var handleCalculate = function () {
+    var sum = parseFloat(num1) + parseFloat(num2);
+    setResult(sum);
+  }; */
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
       <h2>Összeadó</h2>
